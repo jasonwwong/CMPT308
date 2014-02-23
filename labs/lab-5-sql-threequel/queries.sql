@@ -51,6 +51,6 @@ WHERE city IN(
 		SELECT city
 		FROM products
 		GROUP BY city
-		ORDER BY count(*) ASC
+		ORDER BY sum(quantity) ASC
 		LIMIT 1)
 ORDER BY name ASC;
