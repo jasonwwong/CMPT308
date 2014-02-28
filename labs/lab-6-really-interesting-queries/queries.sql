@@ -39,8 +39,8 @@ FROM orders LEFT OUTER JOIN customers on (orders.cid = customers.cid)
 ORDER BY dollars DESC;
 
 -- 5.  Show all customer names (in order) and their total ordered
-SELECT name, sum(dollars) AS total
-FROM orders LEFT OUTER JOIN customers on (orders.cid = customers.cid)
+SELECT name, coalesce(sum(dollars),0.0) AS total
+FROM customers LEFT OUTER JOIN orders on (orders.cid = customers.cid)
 GROUP BY name
 ORDER BY name ASC;
 
